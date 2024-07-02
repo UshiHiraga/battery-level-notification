@@ -23,16 +23,17 @@ CONFIG_FOLDER=$HOME/.config/battery-level-notification/${BATTERY_NAME};
 SLEEP_TIME=5;
 EXEC_PATH="";
 if test -x $CONFIG_FOLDER/config; then source ${CONFIG_FOLDER}/config; fi
+echo "Watching battery ${BATTERY_NAME}"
 
 while true; do
     sleep $SLEEP_TIME;
     
     CURR_BATTERY_LEVEL=$(cat /sys/class/power_supply/${BATTERY_NAME}/capacity);
     if [ $CURR_BATTERY_LEVEL == $PREV_BATTERY_LEVEL ]; then
-        echo "Battery level has not changed.";
         continue;
     fi
     
+    echo "Battery level had a change.";
     PREV_BATTERY_LEVEL="$CURR_BATTERY_LEVEL";
     BATTERY_STATUS=$(cat /sys/class/power_supply/${BATTERY_NAME}/status);
     
