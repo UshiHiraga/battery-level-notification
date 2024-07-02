@@ -1,5 +1,5 @@
 #!/bin/bash
-# A simple program to check changes at battery level.
+# A ligthweigth script to watch for changes at batteries' level."
 
 message(){
     if [ "$?" == "0" ]; then
