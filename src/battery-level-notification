@@ -10,6 +10,12 @@ message(){
 }
 
 BATTERY_NAME=$1;
+
+if test -z $BATTERY_NAME; then
+    echo "No battery name. Failure.";
+    exit 0;
+fi
+
 PREV_BATTERY_LEVEL=$(cat /sys/class/power_supply/${BATTERY_NAME}/capacity);
 CONFIG_FOLDER=$HOME/.config/battery-level-notification/${BATTERY_NAME};
 
