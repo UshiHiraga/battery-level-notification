@@ -1,0 +1,10 @@
+[Unit]
+Description=A ligthweigth script to watch for changes at battery %i level.
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/battery-level-notification %i
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
